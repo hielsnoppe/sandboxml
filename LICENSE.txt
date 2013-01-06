@@ -1,6 +1,3 @@
-sandboxml
-=========
-
 Copyright 2013 Niels Hoppe (and other contributors)
 http://github.com/hielsnoppe/sandboxml
 

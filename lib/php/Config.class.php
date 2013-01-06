@@ -1,8 +1,8 @@
-sandboxml
-=========
+<?php
 
-Copyright 2013 Niels Hoppe (and other contributors)
-http://github.com/hielsnoppe/sandboxml
+/*
+Copyright 2013 Niels Hoppe
+http://github.com/hielsnoppe/misc
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -22,3 +22,33 @@ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
 LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+
+class Config {
+
+	private $data = array();
+
+	public function __construct($data = null) {
+		if (isset($data)) $this->data = $data;
+	}
+
+	public function set($key, $value) {
+		$keys = explode(".", $key);
+		$step = &$this->data;
+		foreach ($keys as $key) {
+			$step = &$step[$key];
+		}
+		$step = $value;
+	}
+
+	public function get($key) {
+		$keys = explode(".", $key);
+		$step = &$this->data;
+		foreach ($keys as $key) {
+			$step = &$step[$key];
+		}
+		return $step;
+	}
+}
+
+?>
